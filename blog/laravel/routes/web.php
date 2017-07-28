@@ -11,9 +11,17 @@
 |
 */
 use App\Task;
-
-Route::get('/','PostController@index');	
-//Route::get('/posts/{posts}','PostController@showPost');
+/*
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/','PostController@index');	
+Route::get('/post/{post}','PostController@showPost');
 Route::get('/posts/create','PostController@create');	
 Route::post('/posts','PostController@store');
+});*/
+
+Route::get('/','PostController@index');	
+Route::get('/post/{post}','PostController@showPost');
+Route::get('/posts/create','PostController@create');	
+Route::post('/posts','PostController@store');
+Route::post('/post/{post}/comments','CommentsController@store');
 

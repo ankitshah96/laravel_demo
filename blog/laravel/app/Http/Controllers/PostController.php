@@ -10,11 +10,13 @@ class PostController extends Controller
 {
     public function index()
     {
-    	 return view('posts.index');
+         $posts=Post::latest()->get();
+    	 return view('posts.index',compact('posts'));
     }
-    public function showPost()
+    public function showPost(Post $post)
     {
-    	return view('posts.show');
+        
+    	return view('posts.show',compact('post'));
     }
      public function create()
     {
